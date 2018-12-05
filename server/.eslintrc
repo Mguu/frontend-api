@@ -1,0 +1,116 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "node": true,
+    "commonjs": true,
+    "es6": true,
+    "jest": true
+  },
+  "settings": {
+    "import/resolver": "webpack"
+  },
+  "rules": {
+    "import/first": "off",
+    "camelcase": [0, "never"],
+    "linebreak-style": 0,
+    "function-paren-newline": "off",
+    "class-methods-use-this": "off",
+    "eqeqeq": "off",
+    "prefer-const": "off",
+    "forbid-prop-types": ["off"],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 340
+      }
+    ],
+    "no-console": "off",
+    "comma-dangle": "off",
+    "no-plusplus": "off",
+    "padded-blocks": [
+      "error",
+      {
+        "blocks": "never"
+      }
+    ],
+    "react/jsx-closing-bracket-location": [1, "after-props"],
+    "object-curly-spacing": [1, "always"],
+    "object-curly-newline": [
+      1,
+      {
+        "multiline": true
+      }
+    ],
+    "curly": [1, "multi-line"],
+    "no-nested-ternary": [0],
+    "arrow-parens": [1, "as-needed"],
+    "quote-props": ["error", "consistent-as-needed"],
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "jsx-a11y/no-autofocus": "off",
+    "jsx-a11y/label-has-for": [
+      2,
+      {
+        "components": ["Label"],
+        "required": {
+          "every": ["id"]
+        },
+        "allowChildren": false
+      }
+    ],
+    "no-restricted-globals": "off",
+    "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
+    "react/jsx-uses-react": "error",
+    "react/jsx-no-bind": "off",
+    "react/jsx-uses-vars": "error",
+    "react/no-did-mount-set-state": "off",
+    "react/prefer-stateless-function": "off",
+    "react/no-array-index-key": "off",
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".js"]
+      }
+    ],
+    "react/forbid-prop-types": "off",
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["to", "hrefLeft", "hrefRight"],
+        "aspects": ["noHref", "preferButton"]
+      }
+    ],
+    "react/jsx-tag-spacing": [
+      "error",
+      {
+        "closingSlash": "never",
+        "beforeSelfClosing": "never",
+        "afterOpening": "never"
+      }
+    ],
+    "react/sort-comp": "off",
+    "react/prop-types": [
+      "error",
+      {
+        "ignore": ["children"]
+      }
+    ],
+    "react/no-unused-prop-types": "off"
+  },
+  "plugins": ["react"]
+}

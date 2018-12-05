@@ -1,0 +1,50 @@
+/*          MenuView           */
+
+.frame {
+    width: 1126px;
+    height: 634px;
+    position: absolute;
+    top: 20%;
+    left: 10%; 
+}
+
+
+.btnBigRed {
+    background-color: red;
+    color:white;
+    font-size: 16px;
+    border-radius: 7px;
+    text-transform: uppercase;
+    border: 0;
+    width: 275px;
+    height: 50px;
+    position: absolute;
+    top: 450px;
+    left: 475px;
+    cursor: pointer;
+}
+
+.btnBigRed:focus {
+    outline: 0;
+}
+
+.btn-pos-1 {
+    top: 150px;
+    left: 425px;
+}
+
+.btn-pos-2 {
+    top: 250px;
+    left: 425px;
+}
+
+.btn-pos-3 {
+    top: 350px;
+    left: 425px;
+}
+
+.btn-pos-4 {
+    top: 450px;
+    left: 425px;
+}
+

@@ -1,0 +1,14 @@
+.error-view {
+    background-color: white;
+    
+}
+
+.error-digits {
+    font-size: 84px;
+    margin-bottom: 5px;
+}
+
+.error-word {
+    margin-top: 5px;
+    font-size: 54px;
+}
