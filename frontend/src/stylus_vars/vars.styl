@@ -1,0 +1,89 @@
+vars = json('./vars.json', { hash: true })
+
+/* colors */
+$grey = #cccccc
+$darkgrey = #7e7e7e
+$blue = #4380c5
+$blueLight = #599be6
+$blueDark = #3c74b3
+$blueOpacity = #3c74b3
+$white = #ffffff
+$dark = #000000
+$red = #ce0000
+$darkOpacity05 = rgba(0, 0, 0, 0.5)
+$darkOpacity04 = rgba(0, 0, 0, 0.4)
+$darkOpacity03 = rgba(0, 0, 0, 0.3)
+$darkOpacity01 = rgba(0, 0, 0, 0.1)
+$darkOpacity002 = rgba(0, 0, 0, 0.02)
+
+/* margins */
+$leftInfoMargin = 95px
+
+/* cell width and heights for AppEvaluation view  */
+$evalTableCellWidth = 292px
+$evalTableCellHeight = 100px
+
+/* mixins */
+normalArialFont(size)
+  font-family Arial
+  font-size size
+  font-weight normal
+  font-style normal
+  font-stretch normal
+  line-height normal
+  letter-spacing normal
+
+simpleBlueBtn(w, h, fontSize)
+  display: inline-block;
+  text-align: center;
+  width w
+  height h
+  border-radius 2px
+  background-color $blue
+  color $white
+  border none
+  cursor pointer
+  normalArialFont(fontSize)
+  line-height: h;
+
+  
+
+simpleRedBtn(w, h, fontSize)
+  width w
+  height h
+  border-radius 2px
+  background-color #D0021B
+  color $white
+  border none
+  cursor pointer
+  normalArialFont(fontSize)
+
+invisibleBtn(w, h, fontSize, textColor)
+  height h
+  background none !important
+  border none
+  padding 0 !important
+  cursor pointer
+  color textColor
+  normalArialFont(fontSize)
+  line-height h
+
+centerInline(m)
+  display block
+  margin m auto
+
+disableButton()
+  color #ccc
+  cursor default
+
+fieldLabel()
+  text-align: left;
+  font-family: Arial;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.4);
+  vertical-align: middle;

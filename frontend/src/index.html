@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+  <meta httpEquiv="cleartype" content="on" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="description" content="" />
+  <style>
+    .loader_wrapper {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        display: none;
+        z-index: 10001;
+      }
+      .loader {
+        height: 2px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        background-color: transparent;
+      }
+      .loader:before{
+        display: block;
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 2px;
+        background-color: #5080c0;
+        animation: loading 7s linear;
+      }
+      @keyframes loading {
+        from {width: 10%}
+        50% {width: 30%}
+        60% {width: 40%}
+        70% {width: 50%}
+        90% {width: 90%}
+        95% {width: 90%}
+        100%{width: 100%}
+        to {width: 100%}
+      }
+	</style>
+  <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.png">
+  <title>Каталог инновационных предприятий г. Москвы</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <div class="loader_wrapper" id="preloader">
+    <div class="loader"></div>
+  </div>
+</body>
+
+</html>
