@@ -2,6 +2,7 @@ const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
 const path = require('path');
 const bodyParser = require('body-parser');
+var cors = require('cors');
 var bunyan = require('bunyan');
 const keys = require('./config/keys');
 
@@ -31,6 +32,8 @@ client.connect(function(err) {
   console.log('succesfully connected to mongodb');
   // client.close();
 });
+
+app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
