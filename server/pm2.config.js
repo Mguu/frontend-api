@@ -1,7 +1,7 @@
 module.exports = {
     apps : [
         {
-          name: "startupclubsite",
+          name: "innocatalog",
           script: "./server.js",
           watch: true,
           ignore_watch : ["node_modules", "*.log"],

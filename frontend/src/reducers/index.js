@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
 
 import ModalReducer from './modal_reducer';
-
+import CatalogReducer from './catalog_reducer';
 
 const rootReducer = combineReducers({
-    modalWindow: ModalReducer
+  modalWindow: ModalReducer,
+  catalog: CatalogReducer
 });
 
 

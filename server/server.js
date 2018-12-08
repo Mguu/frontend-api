@@ -27,7 +27,7 @@ client.connect(function(err) {
     global.log.error(err);
   }
 
-  global.db = client.db('mongo');
+  //global.db = client.db('mongo');
   global.log.info('succesfully connected to mongodb');
   console.log('succesfully connected to mongodb');
   // client.close();

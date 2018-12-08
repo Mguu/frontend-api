@@ -1,4 +1,4 @@
-import { MODAL_MESSAGE } from '../actions/index'
+import { MODAL_MESSAGE } from '../actions/index';
 
 const INITIAL_STATE = null;
 

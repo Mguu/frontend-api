@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "",
   "scripts": {
-    "start": "cross-env NODE_ENV=development BABEL_ENV=development && webpack-dev-server --host 0.0.0.0 --port 4000",
+    "start": "cross-env NODE_ENV=development BABEL_ENV=development && webpack-dev-server --host 0.0.0.0 --port 4200",
     "build": "cross-env NODE_ENV=production BABEL_ENV=production webpack",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
@@ -86,6 +86,7 @@
     "react-router-dom": "^4.0.0",
     "react-virtualized": "^9.21.0",
     "redux": "^3.0.4",
+    "redux-devtools-extension": "^2.13.7",
     "redux-thunk": "^2.2.0"
   }
 }
