@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import classnames from 'classnames';
 // import { } from '../actions';
 
-import ErrorView from 'comps/views/ErrorView';
-import TableView from 'comps/views/TableView';
+import ErrorView from './views/ErrorView';
+import TableView from './views/TableView';
+import FirmView from './views/FirmView';
+import ProductsView from './views/ProductsView';
+import AnalyticsView from './views/AnalyticsView';
 
 import {
   BrowserRouter as Router,
@@ -21,10 +25,6 @@ import eagle from './../../assets/icons/eagle@2x.png';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-
-  }
 
   static propTypes = {
     match: PropTypes.object.isRequired,
@@ -32,45 +32,42 @@ class App extends Component {
     history: PropTypes.object.isRequired
   };
 
-  getTabBtnClassName(tab) {
-    const path = this.props.location.pathname;
-    return (tab && path.indexOf(tab) !== -1)
-      ? classnames(styles.tabItem, styles.tabActive)
-      : styles.tabItem;
-  }
-
 
   render() {
-
     return (
 
       <div>
-         <div className={styles.header}>
-            <Link to="/">
-              <img className={styles.eagle} alt="" src={eagle} />
-            </Link>
-            <NavLink to="/" activeClassName={styles.active}>
-              <button className={this.getTabBtnClassName('')} id="">
+        <div className={styles.header}>
+          <Link to="/">
+            <img className={styles.eagle} alt="" src={eagle} />
+          </Link>
+          <NavLink exact to="/" activeClassName={styles.active}>
+            <button className={styles.tabItem}>
                 Каталог предприятий
-              </button>
-            </NavLink>
-            <button
-              style={{ color: '#cccccc', cursor: 'default' }}
-              className={this.getTabBtnClassName('docs')}
-              id="docs">
-              Инновации
             </button>
+          </NavLink>
+          <NavLink to="/products" activeClassName={styles.active}>
             <button
-              style={{ color: '#cccccc', cursor: 'default' }}
-              className={this.getTabBtnClassName('settings')}
+              className={styles.tabItem}
+              id="products">
+                Инновации
+            </button>
+          </NavLink>
+          <NavLink to="/analytics" activeClassName={styles.active}>
+            <button
+              className={styles.tabItem}
               id="settings">
               Аналитика
             </button>
-          </div>
+          </NavLink>
+        </div>
         <div>
           <Switch>
-            <Route exact path="/" component={ TableView } />
-            <Route component={ ErrorView } />
+            <Route exact path="/" component={TableView} />
+            <Route exact path="/catalog/:inn" component={FirmView} />
+            <Route exact path="/products" component={ProductsView} />
+            <Route exact path="/analytics" component={AnalyticsView} />
+            <Route component={ErrorView} />
           </Switch>
         </div>
         {/* <ModalWindow/> */}
@@ -81,12 +78,12 @@ class App extends Component {
 
 
 function mapStateToProps(state) {
-  console.log("app#mapStateToProps");
+  console.log('app#mapStateToProps');
   return { session: state.session };
 }
 
 function mapDispatchToProps(dispatch) {
-  var actions = {};
+  let actions = {};
   return bindActionCreators(actions, dispatch);
 }
 

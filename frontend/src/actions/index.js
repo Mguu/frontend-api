@@ -16,16 +16,8 @@ const Preloader = require('comps/Preloader.js');
 
 const preloader = new Preloader();
 
-let http;
 
-if (process.env.NODE_ENV === 'development') {
-  http = axios.create({baseURL: 'http://localhost:3000' });
-  console.log('local dev');
-} else {
-  console.log('prod');
-  http = axios.create({baseURL: 'http://u4.startup-club.tech' });
-}
-
+export const http = axios.create({ baseURL: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'http://u4.startup-club.tech' });
 
 /*
 * { message: "some message", isModal: true };
@@ -37,14 +29,13 @@ export function showModalWindow(windowProps) {
   };
 }
 
-
 /*
 *
 */
-export const getCatalog = () => dispatch => {
+export const getCatalog = ({ searchInn = '', searchName = '', okved = '' }) => dispatch => {
   preloader.show();
   console.log('action get Catalog');
-  http.get('/catalog')
+  http.get(`/catalog?inn=${searchInn}&name=${searchName}&okved=${okved}`)
     .then(resp => {
       preloader.remove();
       dispatch({
