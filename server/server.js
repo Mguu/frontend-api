@@ -1,15 +1,24 @@
 const express = require('express');
-const MongoClient = require('mongodb').MongoClient;
+// const MongoClient = require('mongodb').MongoClient;
 const path = require('path');
 const bodyParser = require('body-parser');
 var cors = require('cors');
 var bunyan = require('bunyan');
 const keys = require('./config/keys');
+const MongoClient = require('mongodb').MongoClient;
+
+const client = new MongoClient('mongodb://mongodb:itstimeformongodb@68.183.76.109:27017');
+
+const EntityMapper = require('./db/EntityMapper');
+
+
+//var neo4j = require('neo4j-driver').v1;
+//global.driver = neo4j.driver("bolt://68.183.76.109:7687", neo4j.auth.basic('neo4j','itstimeforneo4j'));
 
 
 const app = express();
 const port = process.env.PORT || 3000;
-const client = new MongoClient(keys.mongoURI);
+// const client = new MongoClient(keys.mongoURI);
 
 global.log = bunyan.createLogger({
   name : "startupclub",
@@ -25,11 +34,12 @@ client.connect(function(err) {
 
   if (err) {
     global.log.error(err);
+    console.log(err);
   }
 
-  //global.db = client.db('mongo');
+  global.db = client.db('crawlerDataset');
   global.log.info('succesfully connected to mongodb');
-  console.log('succesfully connected to mongodb');
+  //console.log('succesfully connected to mongodb', global.db);
   // client.close();
 });
 

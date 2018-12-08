@@ -24,8 +24,9 @@ class FirmView extends Component {
 
   componentDidMount() {
     console.log('ccc', this.props.match.params.inn);
-    http.get(`/catalog/${this.props.match.params.inn}`)
+    http.get(`/firm/${this.props.match.params.inn}`)
       .then(resp => {
+        console.log('firm', resp.data);
         this.setState({ firm: resp.data });
       });
   }
@@ -36,16 +37,18 @@ class FirmView extends Component {
         <div className={styles.header}>
           <div className={styles.titleWrapper}>
             <Link to="/" className={styles.backLink} />
-            <h1 className={styles.title}>{this.state.firm.name}</h1>
+            <h1 className={styles.title}>{this.state.firm.COMPANY_SHORT_NAME}</h1>
           </div>
         </div>
         <p className={styles.text}>
           <span className={styles.pTitle}>Место нахождения и почтовый адрес: </span> <br />
-          <p className={styles.pText}>{this.state.firm.address}</p>
+          <p className={styles.pText}>{this.state.firm.LEGAL_ADDRESS}</p>
+          <span className={styles.pTitle}>Генеральный директор: </span> <br />
+          <p className={styles.pText}>{this.state.firm.CEO}</p>
           <span className={styles.pTitle}>Официальный сайт: </span><br />
-          <p className={styles.pText}><a href={this.state.firm.offSite}>{this.state.firm.offSite}</a></p>
-          <span className={styles.pTitle}>Описание продукции: </span><br />
-          <p className={styles.pText}>Какое то описание чудесной и инновационной продукции.</p>
+          <p className={styles.pText}>{ this.state.firm.SITE ? <a href={this.state.firm.SITE}>{this.state.firm.offSite}</a> : 'Не известен' }</p>
+          <span className={styles.pTitle}>Код экономической деятельности: </span><br />
+          <p className={styles.pText}>{`${this.state.firm.OKVED_CODE} - ${this.state.firm.OKVED_DESCR}`}</p>
         </p>
         <p className={styles.text}>{this.state.firm.text}</p>
       </div>

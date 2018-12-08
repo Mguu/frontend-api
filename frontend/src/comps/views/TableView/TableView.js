@@ -11,8 +11,6 @@ import _, { throttle } from 'lodash';
 
 import okved from './okved';
 
-console.log(okved);
-
 import Selector from './../../Selector';
 
 import 'react-virtualized/styles.css';
@@ -32,7 +30,7 @@ class TableView extends Component {
       searchInn: '',
       searchName: '',
       okved: ''
-   };
+    };
 
     this.dataProvider = this.makeOkvedDataProvider(okved);
   }
@@ -69,13 +67,13 @@ class TableView extends Component {
   renderRow = ({ index, key, style }) => {
     const list = this.props.catalog.data;
     return (
-    <div className={styles.row} onClick={this.onRowClick} key={key} id={list[index] && list[index].inn} style={style}>
-        <div style={{ marginRight: '50px', pointerEvents: 'none' }} className="image">
-          <img src={list[index] && list[index].image} alt="" />
+    <div className={styles.row} onClick={this.onRowClick} key={key} id={list[index] && list[index].INN} style={style}>
+        <div style={{ marginRight: '50px', pointerEvents: 'none' }} className={styles.innText}>
+          <span>{list[index] && list[index].INN}</span>
         </div>
         <div style={{ pointerEvents: 'none' }} className="content">
-          <div>{list[index] && list[index].name}</div>
-          <div>{list[index] && list[index].text}</div>
+          <div>{list[index] && list[index].COMPANY_SHORT_NAME}</div>
+          <div className={styles.smallText}>{list[index] && list[index].LEGAL_ADDRESS}</div>
         </div>
     </div>);
   }
