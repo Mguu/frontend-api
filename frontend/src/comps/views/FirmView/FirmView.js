@@ -13,7 +13,7 @@ class FirmView extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { firm: { name: '', offSite: '' }, vk: null };
+    this.state = { firm: { name: '', offSite: '' }, vkdata: null };
   }
 
 
@@ -29,20 +29,31 @@ class FirmView extends Component {
         console.log('firm', resp.data);
         this.setState({ firm: resp.data });
         if (resp.data.CEO) {
-          getVKData(resp.data.CEO, this.renderVK);
+          getVKData(resp.data.CEO, this.setVK);
         }
       });
   }
 
-  renderVK(err, vkdata) {
+  setVK = (err, vkdata) => {
     if (err) {
-      this.setState({ vk: <div>Данные по данному человеку в контакте найти не удалось</div>});
+      this.setState({ vkdata: null });
       return;
     }
     if (vkdata) {
       console.log('renderVK', vkdata);
-      //this.setState({ vk: <div>Данные по данному человеку в контакте найти не удалось</div>});
+      this.setState({ vkdata: vkdata.response });
     }
+  }
+
+  renderVK() {
+    return (
+      <div>
+        <img className={styles.vkimage} src={this.state.vkdata[1].photo_50} alt="" />
+        <div>
+          <a className={styles.vkanchor} href={`https://vk.com/id${this.state.vkdata[1].uid}`}>{`https://vk.com/id${this.state.vkdata[1].uid}`}</a>
+          <p className={styles.vkmobile}>Моб. телефон: {this.state.vkdata[1].mobile_phone ? this.state.vkdata[1].mobile_phone : 'Не найден'}</p>
+        </div>
+      </div>);
   }
 
   renderContacts() {
@@ -52,11 +63,9 @@ class FirmView extends Component {
         <span className={styles.pContacts}>{ `email: ${email}` }</span><br />
         {
           this.state.firm.PHONES &&
-          this.state.firm.PHONES.map((val, i) => {
-            return (
-              <span key={i} className={styles.pContacts}>{ `Телефон ${i + 1}: ${val}` }</span>
-            );
-          })
+          this.state.firm.PHONES.map((val, i) => (
+            <span key={i} className={styles.pContacts}>{ `Телефон ${i + 1}: ${val}` }</span>
+            ))
         }
       </p>
     );
@@ -76,6 +85,8 @@ class FirmView extends Component {
           <p className={styles.pText}>{this.state.firm.LEGAL_ADDRESS}</p>
           <span className={styles.pTitle}>Генеральный директор: </span> <br />
           <p className={styles.pText}>{this.state.firm.CEO}</p>
+          <span className={styles.pTitle}>Вконтакте: </span> <br />
+          { this.state.vkdata ? this.renderVK() : <p>Информация о данном человеке в контакте не найдена</p> }<br />
           <span className={styles.pTitle}>Контакты: </span> <br />
           { this.renderContacts() }
           <span className={styles.pTitle}>Официальный сайт: </span><br />
