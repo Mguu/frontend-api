@@ -1,5 +1,5 @@
 const keys = require('../config/keys');
-const axios = requre('axios');
+const axios = require('axios');
 
 
 module.exports = app => {
