@@ -49,13 +49,13 @@ module.exports = app => {
         axios.get(`https://oauth.vk.com/access_token?client_id=6777108&client_secret=TjXq0EPWb7yd4QDIj1MV&redirect_uri=http://u4.startup-club.tech#/&code=${code}`)
         .then(resp => {
             console.log(resp);
-            fs.writeFile("/token.json", resp, function(err) {
+            fs.writeFile("/token.json", resp.data, function(err) {
                 if(err) {
                     console.log(err);
                     res.status(500).send(error);
                 }
                 console.log("The file was saved!");
-                res.status(200).send(resp);
+                res.status(200).send(resp.data);
             }); 
           })
           .catch(error => {
