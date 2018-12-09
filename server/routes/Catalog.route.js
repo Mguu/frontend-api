@@ -71,7 +71,7 @@ module.exports = app => {
 
     app.get('/getvkdata', (req, res) => {
     
-        axios.get(`http://api.vk.com/method/users.search?q=%D0%92%D0%95%D0%9B%D0%AC%D0%94%D0%98%D0%9D&fields=photo_50,contacts&sort=0&access_token=${t.access_token}&v=V`)
+        axios.get(`https://api.vk.com/method/users.search?q=%D0%92%D0%95%D0%9B%D0%AC%D0%94%D0%98%D0%9D&fields=photo_50,contacts&sort=0&access_token=${t.access_token}&v=V`)
         .then(resp => {
             console.log(resp.data);
             res.status(200).send(resp.data);
