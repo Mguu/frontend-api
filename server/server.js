@@ -5,11 +5,31 @@ const bodyParser = require('body-parser');
 var cors = require('cors');
 var bunyan = require('bunyan');
 const keys = require('./config/keys');
+//const MongoClient = require('mongodb').MongoClient;
 const MongoClient = require('mongodb').MongoClient;
+//const Server = require('mongodb').Server;
 
-const client = new MongoClient('mongodb://mongodb:itstimeformongodb@68.183.76.109:27017');
+//const client = new MongoClient('mongodb://mongodb:itstimeformongodb@68.183.76.109:27017');
+/*var client = new MongoClient(new Server('68.183.76.109', 27017));
+client.open(function(err, client) {
+  if (err) {
+    global.log.error(err);
+    console.log(err);
+  }
 
-const EntityMapper = require('./db/EntityMapper');
+  global.db = client.db('crawlerDataset');
+});*/
+
+MongoClient.connect('mongodb://mongodb:itstimeformongodb@68.183.76.109:27017', function(err, db) {
+    if (err) {
+      global.log.error(err);
+      console.log(err);
+    }
+    global.db = db.db('crawlerDataset');
+    console.log(db, global.db)
+  });
+
+// const EntityMapper = require('./db/EntityMapper');
 
 
 //var neo4j = require('neo4j-driver').v1;
@@ -30,7 +50,7 @@ global.log = bunyan.createLogger({
   } ]
 });
 
-client.connect(function(err) {
+/*client.connect(function(err) {
 
   if (err) {
     global.log.error(err);
@@ -41,7 +61,7 @@ client.connect(function(err) {
     global.db = client.db('crawlerDataset');
     console.log('succesfully connected to mongodb', global.db);
   }, 2000);
-});
+});*/
 
 app.use(cors());
 
