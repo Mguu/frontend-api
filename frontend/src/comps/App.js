@@ -22,6 +22,7 @@ import {
 
 import styles from './App.styl';
 import eagle from './../../assets/icons/eagle@2x.png';
+import vk from './../../assets/icons/vk.png';
 
 class App extends Component {
 
@@ -41,7 +42,6 @@ class App extends Component {
           <Link to="/">
             <img className={styles.eagle} alt="" src={eagle} />
           </Link>
-          
           <NavLink exact to="/" activeClassName={styles.active}>
             <button className={styles.tabItem}>
                 Каталог предприятий
@@ -61,6 +61,9 @@ class App extends Component {
               Аналитика
             </button>
           </NavLink>
+          <Link to="https://oauth.vk.com/authorize?client_id=6777108&redirect_uri=http://u4.startup-club.tech/verify&display=popup&response_type=code&v=5.92">
+            <img className={styles.vk} src={vk} alt="" />
+          </Link>
         </div>
         <div>
           <Switch>

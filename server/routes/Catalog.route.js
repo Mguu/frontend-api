@@ -1,5 +1,5 @@
 const keys = require('../config/keys');
-
+const axios = requre('axios');
 
 
 module.exports = app => {
@@ -42,6 +42,18 @@ module.exports = app => {
 
     });
 
+    app.get('/getvkdata', (req, res) => {
+    
+        axios.get('http://api.vk.com/method/users.search?q=%D0%92%D0%95%D0%9B%D0%AC%D0%94%D0%98%D0%9D&fields=photo_50,contacts&sort=0&access_token=15ddaa2e468e337ec8187554a1a0a1623806d201a36e6b435b5fe1f0f3a4ff55e2f1e447a95ba54a62f90&v=V')
+        .then(resp => {
+            res.status(200).send(resp);
+          })
+          .catch(error => {
+            res.status(500).send(error);
+          });
+        
+
+    });
 
 
 

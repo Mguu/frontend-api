@@ -17,6 +17,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.17.2",
     "bunyan": "^1.8.12",
     "cors": "^2.8.5",
