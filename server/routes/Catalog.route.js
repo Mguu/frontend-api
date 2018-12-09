@@ -73,7 +73,7 @@ module.exports = app => {
     app.get('/getvkdata', (req, res) => {
         const { q } = req.query;
         console.log('q', q);
-        axios.get(`https://api.vk.com/method/users.search?q=${q}&fields=photo_50,contacts&sort=0&access_token=${t.access_token}&v=V`)
+        axios.get(`https://api.vk.com/method/users.search?q=${encodeURIComponent(q)}&fields=photo_50,contacts&sort=0&access_token=${t.access_token}&v=V`)
         .then(resp => {
             console.log(resp.data);
             res.status(200).send(resp.data);
