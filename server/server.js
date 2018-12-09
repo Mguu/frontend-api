@@ -36,14 +36,8 @@ MongoClient.connect(mongoURI, function(err, client) {
       console.log(err);
     }
     global.db = client.db('crawlerDataset');
-    console.log(db, global.db);
+    // console.log(db, global.db);
   });
-
-// const EntityMapper = require('./db/EntityMapper');
-
-
-//var neo4j = require('neo4j-driver').v1;
-//global.driver = neo4j.driver("bolt://68.183.76.109:7687", neo4j.auth.basic('neo4j','itstimeforneo4j'));
 
 
 const app = express();
@@ -60,18 +54,6 @@ global.log = bunyan.createLogger({
   } ]
 });
 
-/*client.connect(function(err) {
-
-  if (err) {
-    global.log.error(err);
-    console.log(err);
-  }
-
-  setTimeout(() => { 
-    global.db = client.db('crawlerDataset');
-    console.log('succesfully connected to mongodb', global.db);
-  }, 2000);
-});*/
 
 app.use(cors());
 
