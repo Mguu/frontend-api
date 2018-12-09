@@ -23,10 +23,10 @@ class FirmView extends Component {
   };
 
   componentDidMount() {
-    console.log('ccc', this.props.match.params.inn);
+    // console.log('ccc', this.props.match.params.inn);
     http.get(`/firm/${this.props.match.params.inn}`)
       .then(resp => {
-        console.log('firm', resp.data);
+        // console.log('firm', resp.data);
         this.setState({ firm: resp.data });
         if (resp.data.CEO) {
           getVKData(resp.data.CEO, this.setVK);
@@ -40,7 +40,7 @@ class FirmView extends Component {
       return;
     }
     if (vkdata) {
-      console.log('renderVK', vkdata);
+      // console.log('renderVK', vkdata);
       this.setState({ vkdata: vkdata.response });
     }
   }
@@ -92,7 +92,7 @@ class FirmView extends Component {
           <span className={styles.pTitle}>Официальный сайт: </span><br />
           <p className={styles.pText}>{ this.state.firm.SITE ? <a href={this.state.firm.SITE}>{this.state.firm.offSite}</a> : 'Не известен' }</p>
           <span className={styles.pTitle}>Код экономической деятельности: </span><br />
-          <p className={styles.pText}>{`${this.state.firm.OKVED_CODE} - ${this.state.firm.OKVED_DESCR}`}</p>
+          <p className={styles.pText}>{`${this.state.firm.OKVED_MAIN}`}</p>
           <span className={styles.pTitle}>Реквизиты: </span><br />
           <p className={styles.pText}>
             <span>ИНН: {this.state.firm.INN}</span><br />

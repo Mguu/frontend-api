@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getAgreggate } from './../../../actions';
 import { HorizontalBar } from 'react-chartjs-2';
-import okved from './../TableView/okved';
+import okved from './../TableView/okved2.json';
 
 import styles from './Analytics.styl';
 

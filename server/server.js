@@ -22,6 +22,8 @@ client.open(function(err, client) {
 
 let mongoURI;
 
+console.log(process.env.NODE_ENV);
+
 if (process.env.NODE_ENV == 'development') {
   mongoURI = 'mongodb://mongodb:itstimeformongodb@68.183.76.109:27017';
 } else {
@@ -35,7 +37,8 @@ MongoClient.connect(mongoURI, function(err, client) {
       global.log.error(err);
       console.log(err);
     }
-    global.db = client.db('crawlerDataset');
+    //global.db = client.db('crawlerDataset');
+    global.db = client.db('crawlerRegreestr');
     // console.log(db, global.db);
   });
 
