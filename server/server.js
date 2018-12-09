@@ -37,10 +37,10 @@ client.connect(function(err) {
     console.log(err);
   }
 
-  global.db = client.db('crawlerDataset');
-  global.log.info('succesfully connected to mongodb');
-  //console.log('succesfully connected to mongodb', global.db);
-  // client.close();
+  setTimeout(() => { 
+    global.db = client.db('crawlerDataset');
+    console.log('succesfully connected to mongodb', global.db);
+  }, 2000);
 });
 
 app.use(cors());

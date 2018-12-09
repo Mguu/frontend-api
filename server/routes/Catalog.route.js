@@ -1,18 +1,6 @@
 const keys = require('../config/keys');
 
-const EntityMapper = require('../db/EntityMapper');
 
-const ROW_COUNT = 10000;
-
-const list = Array(ROW_COUNT).fill().map((val, id) => ({
-    inn: id,
-    name: `ООО "Ромашка - ${id}"`,
-    offSite: 'http://yandex.ru',
-    image: 'http://via.placeholder.com/40',
-    generalDirector: 'Иванов Петр Петрович',
-    address: 'Москва, ул Красный Октябрь д. 10 стр. 6',
-    text: `Еще какой то текст`
-  }));
 
 module.exports = app => {
 
@@ -46,12 +34,10 @@ module.exports = app => {
 
     app.get('/okvedstats', (req, res) => {
     
-        global.db.collection('companies').aggregate([{$group: { _id: "$OKVED_CODE", cnt: {$sum: 1} } }, { $sort: { cnt: 1 } }]).toArray((err, result) =>{
+        global.db.collection('companies').aggregate([{$group: { _id: "$OKVED_CODE", cnt: {$sum: 1} } }, { $sort: { cnt: 1 } }]).toArray((err, result) => {
             console.log(err);
-            console.log(result);
-            res.status(200).send({
-                ...result
-            });
+            //console.log(result);
+            res.status(200).send(result);
         });
 
     });
