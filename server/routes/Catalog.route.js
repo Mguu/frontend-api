@@ -1,5 +1,6 @@
 const keys = require('../config/keys');
 const axios = require('axios');
+const fs = require('fs');
 
 
 module.exports = app => {
@@ -41,6 +42,27 @@ module.exports = app => {
         });
 
     });
+
+    app.get('/verify', (req, res) => {
+        const { code} = req.query;
+        console.log('query', query);
+        axios.get(`https://oauth.vk.com/access_token?client_id=6777108&client_secret=TjXq0EPWb7yd4QDIj1MV&redirect_uri=http://u4.startup-club.tech#/&code=${code}`)
+        .then(resp => {
+            //res.status(200).send(resp);
+            console.log(resp);
+            fs.writeFile("/token.json", resp, function(err) {
+                if(err) {
+                    return console.log(err);
+                }
+                console.log("The file was saved!");
+            }); 
+          })
+          .catch(error => {
+            //res.status(500).send(error);
+            console.log(error)
+          });
+    });
+
 
     app.get('/getvkdata', (req, res) => {
     

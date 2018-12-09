@@ -33,6 +33,11 @@ class App extends Component {
     history: PropTypes.object.isRequired
   };
 
+  auth(e) {
+    e.preventDefault();
+    window.history.pushState({}, 'Auth', 'https://oauth.vk.com/authorize?client_id=6777108&redirect_uri=http://u4.startup-club.tech/verify&display=popup&response_type=code&v=5.92');
+  }
+
 
   render() {
     return (
@@ -61,7 +66,7 @@ class App extends Component {
               Аналитика
             </button>
           </NavLink>
-          <Link to="https://oauth.vk.com/authorize?client_id=6777108&redirect_uri=http://u4.startup-club.tech/verify&display=popup&response_type=code&v=5.92">
+          <Link onClick={this.auth} to="/">
             <img className={styles.vk} src={vk} alt="" />
           </Link>
         </div>
