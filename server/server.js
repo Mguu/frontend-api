@@ -20,13 +20,23 @@ client.open(function(err, client) {
   global.db = client.db('crawlerDataset');
 });*/
 
-MongoClient.connect('mongodb://mongodb:itstimeformongodb@68.183.76.109:27017', function(err, db) {
+let mongoURI;
+
+if (process.env.NODE_ENV == 'development') {
+  mongoURI = 'mongodb://mongodb:itstimeformongodb@68.183.76.109:27017';
+} else {
+  mongoURI = 'mongodb://mongodb:itstimeformongodb@localhost:27017';
+}
+
+console.log('mongoURI', mongoURI);
+
+MongoClient.connect(mongoURI, function(err, client) {
     if (err) {
       global.log.error(err);
       console.log(err);
     }
-    global.db = db.db('crawlerDataset');
-    console.log(db, global.db)
+    global.db = client.db('crawlerDataset');
+    console.log(db, global.db);
   });
 
 // const EntityMapper = require('./db/EntityMapper');

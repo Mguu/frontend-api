@@ -17,7 +17,7 @@ const Preloader = require('comps/Preloader.js');
 const preloader = new Preloader();
 
 
-export const http = axios.create({ baseURL: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'http://u4.startup-club.tech' });
+export const http = axios.create({ baseURL: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'http://u4.startup-club.tech:3000' });
 
 /*
 * { message: "some message", isModal: true };
