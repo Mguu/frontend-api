@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { http } from 'actions';
 
 import styles from './FirmView.styl';
@@ -31,6 +31,23 @@ class FirmView extends Component {
       });
   }
 
+  renderContacts() {
+    const email = this.state.firm.EMAIL ? this.state.firm.EMAIL : 'Не известен';
+    return (
+      <p>
+        <span className={styles.pContacts}>{ `email: ${email}` }</span><br />
+        {
+          this.state.firm.PHONES &&
+          this.state.firm.PHONES.map((val, i) => {
+            return (
+              <span key={i} className={styles.pContacts}>{ `Телефон ${i + 1}: ${val}` }</span>
+            );
+          })
+        }
+      </p>
+    );
+  }
+
   render() {
     return (
       <div style={{ width: '100%', height: '100%' }}>
@@ -45,10 +62,18 @@ class FirmView extends Component {
           <p className={styles.pText}>{this.state.firm.LEGAL_ADDRESS}</p>
           <span className={styles.pTitle}>Генеральный директор: </span> <br />
           <p className={styles.pText}>{this.state.firm.CEO}</p>
+          <span className={styles.pTitle}>Контакты: </span> <br />
+          { this.renderContacts() }
           <span className={styles.pTitle}>Официальный сайт: </span><br />
           <p className={styles.pText}>{ this.state.firm.SITE ? <a href={this.state.firm.SITE}>{this.state.firm.offSite}</a> : 'Не известен' }</p>
           <span className={styles.pTitle}>Код экономической деятельности: </span><br />
           <p className={styles.pText}>{`${this.state.firm.OKVED_CODE} - ${this.state.firm.OKVED_DESCR}`}</p>
+          <span className={styles.pTitle}>Реквизиты: </span><br />
+          <p className={styles.pText}>
+            <span>ИНН: {this.state.firm.INN}</span><br />
+            <span>КПП: {this.state.firm.KPP}</span><br />
+            <span>ОГРН: {this.state.firm.OGRN}</span><br />
+          </p>
         </p>
         <p className={styles.text}>{this.state.firm.text}</p>
       </div>

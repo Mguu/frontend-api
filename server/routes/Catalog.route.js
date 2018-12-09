@@ -44,5 +44,19 @@ module.exports = app => {
     });
 
 
+    app.get('/okvedstats', (req, res) => {
+    
+        global.db.collection('companies').aggregate([{$group: { _id: "$OKVED_CODE", cnt: {$sum: 1} } }, { $sort: { cnt: 1 } }]).toArray((err, result) =>{
+            console.log(err);
+            console.log(result);
+            res.status(200).send({
+                ...result
+            });
+        });
+
+    });
+
+
+
 
 };
