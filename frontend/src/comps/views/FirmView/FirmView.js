@@ -48,7 +48,7 @@ class FirmView extends Component {
   renderVK() {
     return (
       <div>
-        <img className={styles.vkimage} src={this.state.vkdata[1].photo_50} alt="" />
+        <img className={styles.vkimage} src={this.state.vkdata[1].photo_50 || 'https://vkontakte.ru/images/camera_c.gif'} alt="" />
         <div>
           <a className={styles.vkanchor} href={`https://vk.com/id${this.state.vkdata[1].uid}`}>{`https://vk.com/id${this.state.vkdata[1].uid}`}</a>
           <p className={styles.vkmobile}>Моб. телефон: {this.state.vkdata[1].mobile_phone ? this.state.vkdata[1].mobile_phone : 'Не найден'}</p>
