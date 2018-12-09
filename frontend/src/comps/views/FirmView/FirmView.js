@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { http } from 'actions';
+import { http, getVKData } from 'actions';
 
 import styles from './FirmView.styl';
 
@@ -13,7 +13,7 @@ class FirmView extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { firm: { name: '', offSite: '' } };
+    this.state = { firm: { name: '', offSite: '' }, vk: null };
   }
 
 
@@ -28,7 +28,21 @@ class FirmView extends Component {
       .then(resp => {
         console.log('firm', resp.data);
         this.setState({ firm: resp.data });
+        if (resp.data.CEO) {
+          getVKData(resp.data.CEO, this.renderVK);
+        }
       });
+  }
+
+  renderVK(err, vkdata) {
+    if (err) {
+      this.setState({ vk: <div>Данные по данному человеку в контакте найти не удалось</div>});
+      return;
+    }
+    if (vkdata) {
+      console.log('renderVK', vkdata);
+      //this.setState({ vk: <div>Данные по данному человеку в контакте найти не удалось</div>});
+    }
   }
 
   renderContacts() {

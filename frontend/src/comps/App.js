@@ -41,6 +41,7 @@ class App extends Component {
           <Link to="/">
             <img className={styles.eagle} alt="" src={eagle} />
           </Link>
+          
           <NavLink exact to="/" activeClassName={styles.active}>
             <button className={styles.tabItem}>
                 Каталог предприятий
