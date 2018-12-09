@@ -44,8 +44,8 @@ class TableView extends Component {
   };
 
   makeOkvedDataProvider(data) {
-    let okved = [];
-    for (let i = 0; i < data.length; i++) {
+    let okved = [{ value: '', title: 'Все' }];
+    for (let i = 1; i < data.length; i++) {
       okved.push({ value: data[i][1], title: `${data[i][1]} - ${data[i][0]}` });
     }
     return okved;

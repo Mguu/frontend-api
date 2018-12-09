@@ -56,7 +56,7 @@ class App extends Component {
             <button
               className={styles.tabItem}
               id="products">
-                Инновации
+                Продукты и услуги
             </button>
           </NavLink>
           <NavLink to="/analytics" activeClassName={styles.active}>
@@ -66,9 +66,9 @@ class App extends Component {
               Аналитика
             </button>
           </NavLink>
-          <Link onClick={this.auth} to="/">
+          {/* <Link onClick={this.auth} to="/">
             <img className={styles.vk} src={vk} alt="" />
-          </Link>
+            </Link> */}
         </div>
         <div>
           <Switch>
