@@ -35,7 +35,7 @@ class App extends Component {
 
   auth(e) {
     e.preventDefault();
-    window.history.pushState({}, 'Auth', 'https://oauth.vk.com/authorize?client_id=6777108&redirect_uri=http://u4.startup-club.tech/verify&display=popup&response_type=code&v=5.92');
+    window.location = 'https://oauth.vk.com/authorize?client_id=6777108&redirect_uri=http://u4.startup-club.tech/verify&display=popup&response_type=code&v=5.92';
   }
 
 

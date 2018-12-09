@@ -45,8 +45,8 @@ module.exports = app => {
 
     app.get('/verify', (req, res) => {
         const { code} = req.query;
-        console.log('query', query);
-        axios.get(`https://oauth.vk.com/access_token?client_id=6777108&client_secret=TjXq0EPWb7yd4QDIj1MV&redirect_uri=http://u4.startup-club.tech#/&code=${code}`)
+        //console.log('query', query);
+        axios.get(`https://oauth.vk.com/access_token?client_id=6777108&client_secret=TjXq0EPWb7yd4QDIj1MV&redirect_uri=http://u4.startup-club.tech#/&code=5391815f9554412c30`)
         .then(resp => {
             //res.status(200).send(resp);
             console.log(resp);
