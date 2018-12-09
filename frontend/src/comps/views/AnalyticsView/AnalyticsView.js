@@ -32,15 +32,6 @@ class AnalyticsView extends Component {
       return data;
     }
 
-    /*getLabels(i) {
-      let labels = [];
-      for (let i = 0; i < this.props.agreggate.length; i++) {
-        // eslint-disable-next-line no-underscore-dangle
-        labels.push(this.props.agreggate[i]._id);
-      }
-      return labels;
-    } */
-
     findArrayByCode(value) {
       for (let i = 0; i < okved.length; i++) {
         if (okved[i][1] == value._id) {
@@ -65,7 +56,7 @@ class AnalyticsView extends Component {
               <p className={styles.pText}>Распределение организаций по кодам ОКВЕД (10 наиболее популярных):</p>
               <div>
                 {
-                  this.props.agreggate.map((value, i) => (<p key={i}>{ this.findArrayByCode(value)}</p>))
+                  this.props.agreggate && this.props.agreggate.map((value, i) => (<p key={i}>{value._id ? `${value._id[0]} - ${value._id[1]}: ${value.cnt}` : null}</p>))
                 }
               </div>
             </div>

@@ -83,6 +83,16 @@ class FirmView extends Component {
         <p className={styles.text}>
           <span className={styles.pTitle}>Место нахождения и почтовый адрес: </span> <br />
           <p className={styles.pText}>{this.state.firm.LEGAL_ADDRESS}</p>
+          <span className={styles.pTitle}>Дата регистрации: </span> <br />
+          <p className={styles.pText}>{this.state.firm.REGISRTRATION_DATE && new Date(this.state.firm.REGISRTRATION_DATE).toLocaleString('RU')}</p>
+          <span className={styles.pTitle}>Основатели: </span> <br />
+          { this.state.firm.FOUNDERS ?
+            <ul>
+              {
+                this.state.firm.FOUNDERS.map((value, i) => <li key={i}>{`${value}`}</li>)
+              }
+            </ul> : <p>Отсутствуют</p> }
+          <br />
           <span className={styles.pTitle}>Генеральный директор: </span> <br />
           <p className={styles.pText}>{this.state.firm.CEO}</p>
           <span className={styles.pTitle}>Вконтакте: </span> <br />
@@ -91,8 +101,16 @@ class FirmView extends Component {
           { this.renderContacts() }
           <span className={styles.pTitle}>Официальный сайт: </span><br />
           <p className={styles.pText}>{ this.state.firm.SITE ? <a href={this.state.firm.SITE}>{this.state.firm.offSite}</a> : 'Не известен' }</p>
-          <span className={styles.pTitle}>Код экономической деятельности: </span><br />
+          <span className={styles.pTitle}>Основной код экономической деятельности: </span><br />
           <p className={styles.pText}>{`${this.state.firm.OKVED_MAIN}`}</p>
+          <span className={styles.pTitle}>Дополнительные коды экономической деятельности: </span><br />
+          { this.state.firm.OKVEDs ?
+            <ul>
+              {
+                this.state.firm.OKVEDs.map((value, i) => <li key={i}>{`${value[0]} - ${value[1]}`}</li>)
+              }
+            </ul> : <p>Отсутствуют</p> }
+          <br />
           <span className={styles.pTitle}>Реквизиты: </span><br />
           <p className={styles.pText}>
             <span>ИНН: {this.state.firm.INN}</span><br />

@@ -71,11 +71,18 @@ class TableView extends Component {
         <div style={{ marginRight: '50px', pointerEvents: 'none' }} className={styles.innText}>
           <span>{list[index] && list[index].INN}</span>
         </div>
-        <div style={{ pointerEvents: 'none' }} className="content">
+        <div style={{ pointerEvents: 'none', width: '360px' }} className="content">
           <div>{list[index] && list[index].COMPANY_SHORT_NAME}</div>
           <div className={styles.smallText}>{list[index] && list[index].LEGAL_ADDRESS}</div>
         </div>
+        { list[index] ? this.renderStatus(list[index].ACTIVE) : null }
     </div>);
+  }
+
+  renderStatus(active) {
+    return (
+      <div className={active ? styles.active : styles.dead}>{active ? 'Действующая' : 'Ликвидирована' }</div>
+    )
   }
 
   onInnInputChange = e => {
